@@ -1,0 +1,20 @@
+[package]
+name = "auto-drive-rust-example"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+auto-drive-sdk = "0.0.2"
+
+[profile.dev]
+opt-level = "z"      # Optimize strictly for size
+lto = true           # Enable Link-Time Optimization across all crates
+codegen-units = 1    # Reduce parallel compilation blocks to maximize LTO stripping
+panic = "abort"      # Remove heavy stack unwinding tracking structures
+
+[profile.release]
+opt-level = "z"      # Optimize strictly for size
+lto = true           # Enable Link-Time Optimization across all crates
+codegen-units = 1    # Reduce parallel compilation blocks to maximize LTO stripping
+panic = "abort"      # Remove heavy stack unwinding tracking structures
